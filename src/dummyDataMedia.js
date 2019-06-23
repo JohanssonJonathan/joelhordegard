@@ -4,7 +4,7 @@ export default [
     "date": "2019-06-15T21:44:07",
     "date_gmt": "2019-06-15T21:44:07",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/ford.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/ford.jpg?alt=media&token=af854a55-69ee-4d01-be4e-f0b4b586eae0"
     },
     "modified": "2019-06-15T21:44:07",
     "modified_gmt": "2019-06-15T21:44:07",
@@ -122,7 +122,7 @@ export default [
     "date": "2019-06-15T21:34:03",
     "date_gmt": "2019-06-15T21:34:03",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/Lucozade.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/Lucozade.jpg?alt=media&token=7ab10457-06e5-4f74-956c-c65d2523e2cd"
     },
     "modified": "2019-06-15T21:34:03",
     "modified_gmt": "2019-06-15T21:34:03",
@@ -226,7 +226,7 @@ export default [
     "date": "2019-06-15T20:41:20",
     "date_gmt": "2019-06-15T20:41:20",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/volvo-thumb1.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/volvo-thumb1.jpg?alt=media&token=ea9b58be-2d3d-4c0e-a800-cadc0552dc14"
     },
     "modified": "2019-06-15T20:41:20",
     "modified_gmt": "2019-06-15T20:41:20",
@@ -330,7 +330,7 @@ export default [
     "date": "2019-06-15T20:40:40",
     "date_gmt": "2019-06-15T20:40:40",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/thumb-hm.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/thumb-hm.jpg?alt=media&token=23c55251-d3bc-4e84-9168-d8d5910ead02"
     },
     "modified": "2019-06-15T20:40:40",
     "modified_gmt": "2019-06-15T20:40:40",
@@ -434,7 +434,7 @@ export default [
     "date": "2019-06-15T20:40:08",
     "date_gmt": "2019-06-15T20:40:08",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/thumb-b.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/thumb-b.jpg?alt=media&token=333cacf1-41ee-49be-8aca-1282849c4538"
     },
     "modified": "2019-06-15T20:40:08",
     "modified_gmt": "2019-06-15T20:40:08",
@@ -545,7 +545,7 @@ export default [
     "date": "2019-06-15T20:39:16",
     "date_gmt": "2019-06-15T20:39:16",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/thumb-adidas.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/thumb-adidas.jpg?alt=media&token=490b9b30-e9c7-42b0-bc02-518cbb2814d4"
     },
     "modified": "2019-06-15T20:39:16",
     "modified_gmt": "2019-06-15T20:39:16",
@@ -656,7 +656,7 @@ export default [
     "date": "2019-06-15T20:09:31",
     "date_gmt": "2019-06-15T20:09:31",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/11215702_10153521712718729_9189342040971491323_n.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/11215702_10153521712718729_9189342040971491323_n.jpg?alt=media&token=20ee3488-3eef-4fdb-a65e-7d0281bcb430"
     },
     "modified": "2019-06-15T20:09:31",
     "modified_gmt": "2019-06-15T20:09:31",
@@ -767,7 +767,7 @@ export default [
     "date": "2019-06-15T20:08:43",
     "date_gmt": "2019-06-15T20:08:43",
     "guid": {
-    "rendered": "http://joelhordegard.local/wp-content/uploads/2019/06/6599_10153963597533729_8726300701217551160_n.jpg"
+    "rendered": "https://firebasestorage.googleapis.com/v0/b/jonathanjohansson-69096.appspot.com/o/6599_10153963597533729_8726300701217551160_n.jpg?alt=media&token=3fe91af6-87bf-4d10-816e-0c1f43722bdd"
     },
     "modified": "2019-06-15T20:08:43",
     "modified_gmt": "2019-06-15T20:08:43",
