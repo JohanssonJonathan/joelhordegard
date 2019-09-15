@@ -1,29 +1,17 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./CSS/App.css";
+import Header from "./Components/Header";
+import Videos from "./Components/Videos";
 import dummyDataPosts from "./dummyDataPosts";
 import dummyDataMedia from "./dummyDataMedia.js";
-
-const EachData = ({ data, title }) =>
-  data.map(({ guid }, index) => {
-    return (
-      <li>
-        <div>
-          <span>
-          {title[index].title.rendered}
-          </span>
-          <img src={guid.rendered} />
-          <h2 id="play">Play</h2>
-        </div>
-      </li>
-    );
-  });
 
 class App extends Component {
   state = {
     media: [],
     posts: [],
     dummyDataPosts: dummyDataPosts,
-    dummyDataMedia:dummyDataMedia
+    dummyDataMedia: dummyDataMedia,
+    hideHeader: false
   };
   componentDidMount() {
     fetch("http://joelhordegard.local/wp-json/wp/v2/media")
@@ -36,27 +24,25 @@ class App extends Component {
   render() {
     const { posts, media, dummyDataPosts, dummyDataMedia } = this.state;
 
+ 
+    return media.length > 0 && posts.length > 0 ? (
+      <div className={this.state.hideHeader === false &&"container" }>
+        {this.state.hideHeader === false && <Header />}
 
-    return (
-      <div className="container">
-        <div>
-          <h1 id="name"> Joel Hördegård</h1>
-          <ul>
-            <li>
-              <h4>/Contact</h4>
-            </li>
-          </ul>
-        </div>
-
-        {media.length > 0 && posts.length > 0 ? (
-          <ul className="images">
-            <EachData data={media} title={posts} />
-          </ul>
-        ) : (
-          <ul className="images">
-            <EachData data={dummyDataMedia} title={dummyDataPosts} />
-          </ul>
-        )}
+        <Videos
+          media={media}
+          title={posts}
+          hideHeader={() => this.setState({ hideHeader: !this.state.hideHeader })}
+        />
+      </div>
+    ) : (
+      <div className={this.state.hideHeader === false &&"container"}>
+        {this.state.hideHeader === false && <Header />}
+        <Videos
+          media={dummyDataMedia}
+          title={dummyDataPosts}
+          hideHeader={() => this.setState({ hideHeader: !this.state.hideHeader })}
+        />
       </div>
     );
   }
