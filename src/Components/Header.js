@@ -20,9 +20,9 @@ const LeftHeader = () => (
   <div className="header left">
     <div className="left-information">
       <h1>JOEL HÖRDEGÅRD</h1>
-      <h5>/CONTACT</h5>
+      <h5> / CONTACT</h5>
     </div>
-    <h5>FSF, Director of Photography</h5>
+    <h6>FSF, Director of Photography</h6>
   </div>)
 ;
 export default Header;
