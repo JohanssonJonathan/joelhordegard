@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../CSS/Videos.css";
+import "../../CSS/Videos.css";
 import ReactHtmlParser from "react-html-parser";
 
 class Videos extends Component {
