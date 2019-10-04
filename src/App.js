@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./CSS/App.css";
-import Header from "./Components/Header";
-import Videos from "./Components/Videos";
+import Home from "./Components/Home"
+import LandingPage from "./Components/LandingPage"
 import dummyDataPosts from "./dummyDataPosts";
 import dummyDataMedia from "./dummyDataMedia.js";
 
@@ -11,7 +12,6 @@ class App extends Component {
     posts: [],
     dummyDataPosts: dummyDataPosts,
     dummyDataMedia: dummyDataMedia,
-    hideHeader: false
   };
   componentDidMount() {
     fetch("http://joelhordegard.local/wp-json/wp/v2/media")
@@ -24,27 +24,21 @@ class App extends Component {
   render() {
     const { posts, media, dummyDataPosts, dummyDataMedia } = this.state;
 
- 
-    return media.length > 0 && posts.length > 0 ? (
-      <div className={this.state.hideHeader === false &&"container" }>
-        {this.state.hideHeader === false && <Header />}
+    
+    return (
+      <Router>
+        <Switch>
+        <Route path="/home">
+            <Home {...this.state}/>
+          </Route>
+          <Route path="/">
+            <LandingPage/>
+          </Route>
+          
+        </Switch>
+      </Router>
+    )
 
-        <Videos
-          media={media}
-          title={posts}
-          hideHeader={() => this.setState({ hideHeader: !this.state.hideHeader })}
-        />
-      </div>
-    ) : (
-      <div className={this.state.hideHeader === false &&"container"}>
-        {this.state.hideHeader === false && <Header />}
-        <Videos
-          media={dummyDataMedia}
-          title={dummyDataPosts}
-          hideHeader={() => this.setState({ hideHeader: !this.state.hideHeader })}
-        />
-      </div>
-    );
   }
 }
 
