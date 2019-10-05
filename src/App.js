@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./CSS/App.css";
-import Home from "./Components/Home"
+import Home from "./Components/Work"
 import LandingPage from "./Components/LandingPage"
 import dummyDataPosts from "./dummyDataPosts";
 import dummyDataMedia from "./dummyDataMedia.js";
@@ -23,16 +23,15 @@ class App extends Component {
   }
   render() {
     const { posts, media, dummyDataPosts, dummyDataMedia } = this.state;
-
-    
+ 
     return (
       <Router>
         <Switch>
-        <Route path="/home">
+        <Route path="/work">
             <Home {...this.state}/>
           </Route>
           <Route path="/">
-            <LandingPage/>
+            <LandingPage media={media}/>
           </Route>
           
         </Switch>

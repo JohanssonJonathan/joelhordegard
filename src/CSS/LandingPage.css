@@ -1,9 +1,60 @@
-
-.container-landing-page  {
-    position: relative;
-    width:100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center center;
+.name-and-work {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
+.link {
+  position: relative;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 100;
+  font-size: 30px;
+  transition: all 0.1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link span {
+  right: 40px;
+  text-align: right;
+  font-size: 15px;
+  position: absolute;
+  bottom: -30px;
+}
+
+.link:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease-in-out;
+  bottom: -10px;
+}
+
+.link:hover:after {
+  width: 90%;
+}
+
+.link:hover {
+  font-size: 37px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 1);
+}
+
+#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}

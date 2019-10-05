@@ -1,12 +1,12 @@
 
 @font-face {
-  font-family: 'Helvetica';
-  src: local('Helvetica'), url(./Fonts/Helvetica.ttf) format('truetype');
+  font-family: 'Times';
+  src: local('Times'), url(./Fonts/Times-SemiBold.ttf) format('truetype');
 }
 
 body {
   margin: 0;
-  font-family:Helvetica;
+  font-family:Times;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
