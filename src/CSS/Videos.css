@@ -75,18 +75,25 @@
 
 /* VIDEO */ 
 .video{
-
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
   margin:auto;
   display: flex;
   justify-content: center;
-  height:100vh;
+  left:0;
+  right:0;
+  top:0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.9);
+  z-index:2;
+  overflow: hidden;
   align-items:center;
   flex-direction: column;
 } 
 
 .video-box{
-  padding:60px 0;
-  background-color: #F9F9F9;
+
   position: relative;
   display: flex;
   justify-content: center;
