@@ -1,19 +1,57 @@
-import React, { Component } from "react";
-import "../../CSS/Videos.css";
-import ReactHtmlParser from "react-html-parser";
+import React, { Component, Fragment } from "react";
+import Cards from "./Cards"
+import VideoFullScreen from "./VideoFullScreen"
+import Vimeo from "@vimeo/player"
 
 class Videos extends Component {
   state = {
+    indexOfLastVideo: null,
     iFrameVideo: false,
-    index: null
+    index: null,
+    direction: null
+  };
+
+  componentDidMount() {
+   
+
+    // console.log("vimeo player: ", player)
+    const { media, title } = this.props;
+    const cardsWithVideo = media.filter(
+      (_, index) => title[index] && title[index].content.rendered
+    );
+    this.setState({ indexOfLastVideo: cardsWithVideo.length - 1 });
+  }
+
+  updateVideo = next => {
+    const { index, indexOfLastVideo } = this.state;
+    const { title } = this.props;
+    const newIndex = next ? index + 1 : index - 1;
+
+    const iFrameVideo = title[newIndex] && title[newIndex].content.rendered;
+
+    if (iFrameVideo) {
+      this.setState({
+        index: newIndex,
+        iFrameVideo: iFrameVideo,
+        direction: next ? "next" : "previous"
+      });
+    } else {
+      this.setState({
+        index: next ? 0 : indexOfLastVideo,
+        iFrameVideo:
+          title[next ? 0 : indexOfLastVideo] &&
+          title[next ? 0 : indexOfLastVideo].content.rendered,
+        direction: next ? "next" : "previous"
+      });
+    }
   };
 
   render() {
     const { media, title } = this.props;
-
+    const { index, direction } = this.state;
     const regexpWidth = /width="[0-9]+"/gm;
     const regexpHeight = /height="[0-9]+"/gm;
-
+    const iframe = /<iframe (.?)+<\/iframe>/gm
     const width =
       this.state.iFrameVideo && this.state.iFrameVideo.match(regexpWidth);
     const height =
@@ -23,73 +61,37 @@ class Videos extends Component {
       this.state.iFrameVideo
         .replace(width[0], "")
         .replace(height[0], "")
-        .replace("iframe", 'iframe class="big-video"');
+        .replace("iframe", 'iframe class="big-video"')
 
-    return this.state.iFrameVideo ? (
-      <VideoLarge
-        modifiedIFrameString={modifiedIFrameString}
-        index={this.state.index}
-        hideLargeScreen={() => this.setState({ iFrameVideo: false })}
-        {...this.props}
-      />
-    ) : (
-      media.map(({ guid }, index) => {
-        const src = guid.rendered;
-        var iFrameVideo = title[index] && title[index].content.rendered;
 
-        const newProps = {
-          src,
-          index,
-          iFrameVideo,
-          showVideo: () => this.setState({ iFrameVideo, index })
-        };
 
-        return <Card {...newProps} {...this.props} />;
-      })
+
+    const videoFullScreen = {
+      modifiedIFrameString,
+      index,
+      setDirection: this.updateVideo,
+      direction,
+      hideLargeScreen: () => this.setState({ iFrameVideo: false })
+    };
+
+    return (
+      <Fragment>
+        {this.state.iFrameVideo && <VideoFullScreen {...videoFullScreen} />}
+
+        <Cards
+          media={media}
+          title={title}
+          showVideo={(iFrameVideo, index) =>
+            this.setState({ iFrameVideo, index })
+          }
+        />
+      </Fragment>
     );
   }
 }
 
-const VideoLarge = (props) => {
-  return (
-    <div className="video">
-      <div>
-        <div className="video-box">
-          <h5
-            className="close"
-            onClick={() => {
-              props.hideLargeScreen()
-              props.hideHeader();
-            }}
-          >
-            CLOSE WINDOW
-          </h5>
-          {ReactHtmlParser(props.modifiedIFrameString)}
-        </div>
-        <h5 className="title">{props.title[props.index].title.rendered} </h5>
-      </div>
-    </div>
-  );
-};
 
-const Card = props => {
-  return (
-    <div
-      key={props.index}
-      className="image-container"
-      onClick={() => {
-        if (props.iFrameVideo) {
-          props.hideHeader();
-          props.showVideo();
-        }
-      }}
-    >
-      <span>
-        {props.title[props.index] && props.title[props.index].title.rendered}
-      </span>
-      <img src={props.src} />
-      <h2 id="play">Play</h2>
-    </div>
-  );
-};
+
+
+
 export default Videos;
