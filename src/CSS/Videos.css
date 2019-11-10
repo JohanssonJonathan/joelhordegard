@@ -72,105 +72,95 @@
   opacity: 1;
 }
 
-
-/* VIDEO */ 
-.video{
+/* VIDEO */
+.video {
   position: fixed;
-  height: 100%;
   overflow: hidden;
-  margin:auto;
+  margin: auto;
   display: flex;
   justify-content: center;
-  left:0;
-  right:0;
-  top:0;
+  left: 0;
+  right: 0;
+  top: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.9);
-  z-index:2;
+  z-index: 2;
   overflow: hidden;
-  align-items:center;
+  align-items: center;
   flex-direction: column;
-} 
-
-.video-box{
-
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: all 0.5s ease-in-out;
+}
 
+.close {
+  color: #666666;
 
-
-.close{
-  color:#666666;
-  
   cursor: pointer;
   position: relative;
-  text-align: center
-  
+  text-align: center;
 }
 
-
 @media screen and (min-width: 960px) {
-  .close{
+  .close {
     position: absolute;
-    top:0;
-    right:-120px;
+    top: 0;
+    right: -120px;
     text-align: right;
-
   }
 }
 
-
-.title{
-  display: center;  align-self: flex-start;
-  color:#666666;
-
+.title {
+  display: center;
+  align-self: flex-start;
+  color: #666666;
 }
 
 .big-video {
- 
-  width:200px;
-  height:120px;
-  
-
+  width: 200px;
+  height: 120px;
 }
 
 @media screen and (min-width: 300px) {
   .big-video {
-    width:300px;
-    height:250px;  }
+    width: 300px;
+    height: 250px;
+  }
 }
 
 @media screen and (min-width: 400px) {
   .big-video {
-    width:400px;
-    height:350px;  }
+    width: 400px;
+    height: 350px;
+  }
 }
 
 @media screen and (min-width: 500px) {
   .big-video {
-    width:500px;
-    height:450px;  }
+    width: 500px;
+    height: 450px;
+  }
 }
 
 @media screen and (min-width: 600px) {
   .big-video {
-    width:600px;
-    height:450px;  }
+    width: 600px;
+    height: 450px;
+  }
 }
 
 @media screen and (min-width: 700px) {
   .big-video {
-    width:700px;
-    height:450px;  }
+    width: 700px;
+    height: 450px;
+  }
 }
 
 /* .big-video {
   width:800px;
   height:450px;  } */
-
-
-
