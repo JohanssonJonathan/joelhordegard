@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
-import Cards from "./Cards"
-import VideoFullScreen from "./VideoFullScreen"
-import Vimeo from "@vimeo/player"
+import Cards from "./Cards";
+import VideoFullScreen from "./VideoFullScreen";
 
 class Videos extends Component {
   state = {
@@ -12,14 +11,19 @@ class Videos extends Component {
   };
 
   componentDidMount() {
-   
-
-    // console.log("vimeo player: ", player)
     const { media, title } = this.props;
-    const cardsWithVideo = media.filter(
-      (_, index) => title[index] && title[index].content.rendered
+
+    
+
+    const iframeRegexp = /<iframe.*<\/iframe>/gmi;
+
+    const cardsWithVideo = title.filter(
+      (item) => item.content.rendered.match(iframeRegexp)
     );
-    this.setState({ indexOfLastVideo: cardsWithVideo.length - 1 });
+
+    const length = cardsWithVideo.length
+
+    this.setState({ indexOfLastVideo:length -1});
   }
 
   updateVideo = next => {
@@ -28,6 +32,7 @@ class Videos extends Component {
     const newIndex = next ? index + 1 : index - 1;
 
     const iFrameVideo = title[newIndex] && title[newIndex].content.rendered;
+
 
     if (iFrameVideo) {
       this.setState({
@@ -49,25 +54,19 @@ class Videos extends Component {
   render() {
     const { media, title } = this.props;
     const { index, direction } = this.state;
-    const regexpWidth = /width="[0-9]+"/gm;
-    const regexpHeight = /height="[0-9]+"/gm;
-    const iframe = /<iframe (.?)+<\/iframe>/gm
-    const width =
-      this.state.iFrameVideo && this.state.iFrameVideo.match(regexpWidth);
-    const height =
-      this.state.iFrameVideo && this.state.iFrameVideo.match(regexpHeight);
-    const modifiedIFrameString =
+
+    const regexp = /<iframe.*<\/iframe>/gmi;
+
+
+    
+    const video =
       this.state.iFrameVideo &&
-      this.state.iFrameVideo
-        .replace(width[0], "")
-        .replace(height[0], "")
-        .replace("iframe", 'iframe class="big-video"')
+      this.state.iFrameVideo.replace("iframe", "iframe class='video'");
 
-
-
+    const videoList = video && video.match(regexp);
 
     const videoFullScreen = {
-      modifiedIFrameString,
+      modifiedIFrameString: videoList[0],
       index,
       setDirection: this.updateVideo,
       direction,
@@ -79,6 +78,7 @@ class Videos extends Component {
         {this.state.iFrameVideo && <VideoFullScreen {...videoFullScreen} />}
 
         <Cards
+          videoList={videoList}
           media={media}
           title={title}
           showVideo={(iFrameVideo, index) =>
@@ -89,9 +89,5 @@ class Videos extends Component {
     );
   }
 }
-
-
-
-
 
 export default Videos;
