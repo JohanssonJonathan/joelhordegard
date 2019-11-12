@@ -9,8 +9,8 @@ class LandingPage extends Component {
   };
 
   slowDownVideo = enter => {
-    const video = document.getElementById("background-video");
-    video.playbackRate = enter ? 0.2 : 1;
+    // const video = document.getElementById("background-video");
+    // video.playbackRate = enter ? 0.2 : 1;
     this.setState({ hover: !this.state.hover });
   };
  
@@ -28,7 +28,7 @@ class LandingPage extends Component {
             onMouseLeave={() => this.slowDownVideo()}
           >
             Joel Hördegård / director of photography
-            <span> {hover && "Go to work"}</span>
+            {/* <span> {hover && "Go to work"}</span> */}
           </Link>
         </h1>
 

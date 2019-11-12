@@ -9,7 +9,6 @@ const Header = () => {
 
       <div className="header right">
         <div className="right-information">
-          <h5>LIST VIEW</h5>
           </div>
       </div>
     </Fragment>
@@ -19,10 +18,16 @@ const Header = () => {
 const LeftHeader = () => (
   <div className="header left">
     <div className="left-information">
-      <h1>JOEL HÖRDEGÅRD</h1>
-      <h5> / CONTACT</h5>
+      <h1>Joel Hördegård</h1>
+
+
+
+
+      <h5>  work </h5>
+      <h5>  stills </h5>
+      <h5>  contact </h5>
     </div>
-    <h6>FSF, Director of Photography</h6>
+    <h6>Director of Photography</h6>
   </div>)
 ;
 export default Header;

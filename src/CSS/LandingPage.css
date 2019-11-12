@@ -13,13 +13,16 @@
 .link {
   position: relative;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
   font-weight: 100;
   font-size: 30px;
   transition: all 0.1s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.link:hover{
+  font-size:31px;
 }
 
 .link span {
@@ -30,7 +33,7 @@
   bottom: -30px;
 }
 
-.link:after {
+/* .link:after {
   content: "";
   display: block;
   position: absolute;
@@ -43,13 +46,13 @@
 
 .link:hover:after {
   width: 90%;
-}
+} */
 
-.link:hover {
+/* .link:hover {
   font-size: 37px;
   font-weight: 200;
   color: rgba(255, 255, 255, 1);
-}
+} */
 
 #background-video {
   position: fixed;
