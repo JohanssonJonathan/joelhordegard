@@ -22,6 +22,7 @@ class Card extends Component {
   }
 
   render() {
+
     return (
       <div
         key={this.props.index}
