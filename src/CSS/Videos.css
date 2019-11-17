@@ -29,10 +29,13 @@
   height: 252px;
   top: 100px;
   margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-container img {
-  height: 320px;
+  /* height: 320px; */
   position: relative;
   transition: transform 3s ease 0.2s;
 }

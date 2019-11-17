@@ -23,7 +23,6 @@ class VideoFullScreen extends Component {
   }
 
   componentDidMount() {
-    const { index } = this.props;
 
     const { direction, setDirection } = this.props;
     document.addEventListener("keydown", e => {
@@ -45,6 +44,10 @@ class VideoFullScreen extends Component {
 
       
       const player = new Player(iframe);
+      player.getVideoId().then(function(id) {
+        fetch("https://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/262165847").then(response => response.json())
+        .then(jsondata => console.log(jsondata))
+      });
 
       const { playing } = this.state;
 

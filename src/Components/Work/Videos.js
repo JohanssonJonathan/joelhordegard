@@ -11,7 +11,7 @@ class Videos extends Component {
   };
 
   componentDidMount() {
-    const { media, title } = this.props;
+    const { title } = this.props;
 
     
 
@@ -77,9 +77,9 @@ class Videos extends Component {
       <Fragment>
         {this.state.iFrameVideo && <VideoFullScreen {...videoFullScreen} />}
 
+
         <Cards
           videoList={videoList}
-          media={media}
           title={title}
           showVideo={(iFrameVideo, index) =>
             this.setState({ iFrameVideo, index })
