@@ -1,104 +1,93 @@
-import React, { Component } from "react";
-import "../../CSS/Videos.css";
-import ReactHtmlParser from "react-html-parser";
+import React, { Component, Fragment } from "react";
+import Cards from "./Cards";
+import VideoFullScreen from "./VideoFullScreen";
 
 class Videos extends Component {
   state = {
+    indexOfLastVideo: null,
     iFrameVideo: false,
-    index: null
+    index: null,
+    direction: null
+  };
+
+  componentDidMount() {
+    const { title } = this.props;
+
+    
+
+    const iframeRegexp = /<iframe.*<\/iframe>/gmi;
+
+    const cardsWithVideo = title.filter(
+      (item) => item.content.rendered.match(iframeRegexp)
+    );
+
+    const length = cardsWithVideo.length
+
+    this.setState({ indexOfLastVideo:length -1});
+  }
+
+  updateVideo = next => {
+    const { index, indexOfLastVideo } = this.state;
+    const { title } = this.props;
+    const newIndex = next ? index + 1 : index - 1;
+
+    const iFrameVideo = title[newIndex] && title[newIndex].content.rendered;
+
+
+    if (iFrameVideo) {
+      this.setState({
+        index: newIndex,
+        iFrameVideo: iFrameVideo,
+        direction: next ? "next" : "previous"
+      });
+    } else {
+      this.setState({
+        index: next ? 0 : indexOfLastVideo,
+        iFrameVideo:
+          title[next ? 0 : indexOfLastVideo] &&
+          title[next ? 0 : indexOfLastVideo].content.rendered,
+        direction: next ? "next" : "previous"
+      });
+    }
   };
 
   render() {
-    const { media, title, showVideo } = this.props;
+    const { media, title } = this.props;
+    const { index, direction } = this.state;
 
-    const regexpWidth = /width="[0-9]+"/gm;
-    const regexpHeight = /height="[0-9]+"/gm;
+    const regexp = /<iframe.*<\/iframe>/gmi;
 
-    const width =
-      this.state.iFrameVideo && this.state.iFrameVideo.match(regexpWidth);
-    const height =
-      this.state.iFrameVideo && this.state.iFrameVideo.match(regexpHeight);
-    const modifiedIFrameString =
+
+    
+    const video =
       this.state.iFrameVideo &&
-      this.state.iFrameVideo
-        .replace(width[0], "")
-        .replace(height[0], "")
-        .replace("iframe", 'iframe class="big-video"');
+      this.state.iFrameVideo.replace("iframe", "iframe class='video'");
 
-    console.log("this.state.iFrameVideo :", this.state.iFrameVideo);
+    const videoList = video && video.match(regexp);
 
-    return media.map(({ guid }, index) => {
-      const src = guid.rendered;
-      var iFrameVideo = title[index] && title[index].content.rendered;
+    const videoFullScreen = {
+      modifiedIFrameString: videoList[0],
+      index,
+      setDirection: this.updateVideo,
+      direction,
+      hideLargeScreen: () => this.setState({ iFrameVideo: false })
+    };
 
-      console.log('this.props.showVideo :', this.props.showVideo);
-      
-      const newProps = {
-        src,
-        index,
-        iFrameVideo,
-        showVideo: () => this.props.showVideo(iFrameVideo,index)
-      };
+    return (
+      <Fragment>
+        {this.state.iFrameVideo && <VideoFullScreen {...videoFullScreen} />}
 
-      return <Card {...newProps} {...this.props} />;
-    });
+
+        <Cards
+          videoList={videoList}
+          title={title}
+          showVideo={(iFrameVideo, index) =>
+            this.setState({ iFrameVideo, index })
+          }
+        />
+      </Fragment>
+    );
   }
 }
 
-// <VideoLarge
-// modifiedIFrameString={modifiedIFrameString}
-// index={this.state.index}
-// hideLargeScreen={() => this.setState({ iFrameVideo: false })}
-// {...this.props}
-// />
-
-const VideoLarge = props => {
-  return ReactHtmlParser(props.modifiedIFrameString);
-
-  return (
-    // <div className="video">
-    <div>
-      <div className="video-box">
-        <h5
-          className="close"
-          onClick={() => {
-            props.hideLargeScreen();
-            props.hideHeader();
-          }}
-        >
-          CLOSE WINDOW
-        </h5>
-        {ReactHtmlParser(props.modifiedIFrameString)}
-      </div>
-      <h5 className="title">{props.title[props.index].title.rendered} </h5>
-    </div>
-    // </div>
-  );
-};
-
-const Card = props => {
-  return (
-    <div
-      key={props.index}
-      className="image-container"
-      onClick={() => {
-        console.log('props.iFrameVideo :', props.iFrameVideo);
-        if (props.iFrameVideo) {
-
-
-          props.hideHeader();
-          props.showVideo();
-        }
-      }}
-    >
-
-
-      
-      <span>
-        {props.title[props.index] && props.title[props.index].title.rendered}
-      </span>
-      <img src={props.src} />
-    </div>
-  );
-};
 export default Videos;
