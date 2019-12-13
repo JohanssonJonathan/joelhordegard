@@ -23,10 +23,9 @@ class VideoFullScreen extends Component {
   }
 
   componentDidMount() {
-
     const { direction, setDirection } = this.props;
     document.addEventListener("keydown", e => {
-
+      
       if (e.key === "ArrowLeft") {
         direction === "next" || (direction === null && setDirection());
         this.setState({ playing: false });

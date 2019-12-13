@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment} from "react";
 import Cards from "./Cards";
 import VideoFullScreen from "./VideoFullScreen";
+
+
 
 class Videos extends Component {
   state = {
@@ -11,28 +13,19 @@ class Videos extends Component {
   };
 
   componentDidMount() {
-    const { title } = this.props;
-
-    
-
-    const iframeRegexp = /<iframe.*<\/iframe>/gmi;
-
-    const cardsWithVideo = title.filter(
-      (item) => item.content.rendered.match(iframeRegexp)
-    );
-
-    const length = cardsWithVideo.length
-
-    this.setState({ indexOfLastVideo:length -1});
+    const { videos } = this.props;
+    const iframeRegexp = /<iframe.*<\/iframe>/gim;
+    const cards = videos.filter(({ content }) => content.match(iframeRegexp));
+    const length = cards.length;
+    this.setState({ indexOfLastVideo: length - 1 });
   }
 
   updateVideo = next => {
     const { index, indexOfLastVideo } = this.state;
-    const { title } = this.props;
+    const { videos } = this.props;
     const newIndex = next ? index + 1 : index - 1;
 
-    const iFrameVideo = title[newIndex] && title[newIndex].content.rendered;
-
+    const iFrameVideo = videos[newIndex] && videos[newIndex].content;
 
     if (iFrameVideo) {
       this.setState({
@@ -44,21 +37,19 @@ class Videos extends Component {
       this.setState({
         index: next ? 0 : indexOfLastVideo,
         iFrameVideo:
-          title[next ? 0 : indexOfLastVideo] &&
-          title[next ? 0 : indexOfLastVideo].content.rendered,
+          videos[next ? 0 : indexOfLastVideo] &&
+          videos[next ? 0 : indexOfLastVideo].content,
         direction: next ? "next" : "previous"
       });
     }
   };
 
   render() {
-    const { media, title } = this.props;
+    const { videos } = this.props;
     const { index, direction } = this.state;
 
-    const regexp = /<iframe.*<\/iframe>/gmi;
+    const regexp = /<iframe.*<\/iframe>/gim;
 
-
-    
     const video =
       this.state.iFrameVideo &&
       this.state.iFrameVideo.replace("iframe", "iframe class='video'");
@@ -76,11 +67,8 @@ class Videos extends Component {
     return (
       <Fragment>
         {this.state.iFrameVideo && <VideoFullScreen {...videoFullScreen} />}
-
-
         <Cards
-          videoList={videoList}
-          title={title}
+          data={videos}
           showVideo={(iFrameVideo, index) =>
             this.setState({ iFrameVideo, index })
           }
