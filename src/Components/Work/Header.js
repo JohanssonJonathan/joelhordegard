@@ -3,15 +3,18 @@ import styled from '@emotion/styled/macro'
 
 const Container = styled('div')`
   font-style: italic;
-  position: absolute;
-  top: 45px;
+  position: relative;
+  left:3%;
+  margin-bottom:20px;
   color: white;
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 679px) {
-    top: 25px;
+  @media screen and (min-width:679px) {
+    left:5%;
+
   }
+ 
 `
 
 const Content = styled('div')`

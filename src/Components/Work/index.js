@@ -12,28 +12,18 @@ const Wrapper = styled('div')`
   flex-wrap: wrap;
   padding: 0;
   margin: auto;
+  position:relative;
+  top:40px;
 
-  @media screen and (max-width: 679px) {
-    width: 320px;
-  }
-
-  @media screen and (min-width: 679px) {
-    width: 644px;
-  }
-
-  @media screen and (min-width: 999px) {
-    width: 972px;
-  }
-
-  @media screen and (min-width: 1340px) {
-    width: 1296px;
-  }
 `
 
 const Home = ({ videos }) => {
+
+
   return videos && videos.length > 0 ? (
-    <Wrapper className={'container'}>
+    <Wrapper>
       <Header />
+     
       <Videos videos={videos} />
     </Wrapper>
   ) : null
