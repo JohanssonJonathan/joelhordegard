@@ -45,7 +45,6 @@ const App = () => {
       });
   }, []);
 
-  console.log("videos: ", videos)
   return (
     <Router>
       <Switch>
