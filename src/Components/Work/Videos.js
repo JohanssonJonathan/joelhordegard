@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, useState, useEffect } from 'react'
 import Cards from './Cards'
 import VideoFullScreen from './VideoFullScreen'
 
@@ -8,6 +8,7 @@ class Videos extends Component {
     iFrameVideo: false,
     index: null,
     direction: null,
+    videoId: null,
   }
 
   componentDidMount() {
@@ -22,21 +23,20 @@ class Videos extends Component {
     const { index, indexOfLastVideo } = this.state
     const { videos } = this.props
     const newIndex = next ? index + 1 : index - 1
+    const video = videos[newIndex] && videos[newIndex].metafields[0].value
 
-    const iFrameVideo = videos[newIndex] && videos[newIndex].content
-
-    if (iFrameVideo) {
+    if (video) {
       this.setState({
         index: newIndex,
-        iFrameVideo: iFrameVideo,
+        videoId: videos[newIndex].metafields[0].value,
         direction: next ? 'next' : 'previous',
       })
     } else {
       this.setState({
         index: next ? 0 : indexOfLastVideo,
-        iFrameVideo:
-          videos[next ? 0 : indexOfLastVideo] &&
-          videos[next ? 0 : indexOfLastVideo].content,
+        videoId: next
+          ? videos[0].metafields[0].value
+          : videos[indexOfLastVideo].metafields[0].value,
         direction: next ? 'next' : 'previous',
       })
     }
@@ -44,32 +44,22 @@ class Videos extends Component {
 
   render() {
     const { videos } = this.props
-    const { index, direction } = this.state
-
-    const regexp = /<iframe.*<\/iframe>/gim
-
-    const video =
-      this.state.iFrameVideo &&
-      this.state.iFrameVideo.replace('iframe', "iframe class='video'")
-
-    const videoList = video && video.match(regexp)
+    const { index, direction, videoId } = this.state
 
     const videoFullScreen = {
-      modifiedIFrameString: videoList[0],
+      videoId,
       index,
       setDirection: this.updateVideo,
       direction,
-      hideLargeScreen: () => this.setState({ iFrameVideo: false }),
+      hideLargeScreen: () => this.setState({ videoId: null }),
     }
 
     return (
       <Fragment>
-        {this.state.iFrameVideo && <VideoFullScreen {...videoFullScreen} />}
+        {videoId && <VideoFullScreen {...videoFullScreen} />}
         <Cards
           data={videos}
-          showVideo={(iFrameVideo, index) =>
-            this.setState({ iFrameVideo, index })
-          }
+          fullScreen={(videoId, index) => this.setState({ videoId, index })}
         />
       </Fragment>
     )

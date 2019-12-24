@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './Header'
-import Videos from './Videos'
 import styled from '@emotion/styled/macro'
 
 const Wrapper = styled('div')`
@@ -12,21 +11,19 @@ const Wrapper = styled('div')`
   flex-wrap: wrap;
   padding: 0;
   margin: auto;
-  position:relative;
-  top:40px;
-
+  position: relative;
+  top: 40px;
+  flex-direction:column;
 `
 
-const Home = ({ videos }) => {
-
-
-  return videos && videos.length > 0 ? (
+const Home = ({ videos, children }) => {
+  return (
     <Wrapper>
       <Header />
-     
-      <Videos videos={videos} />
+
+      {children}
     </Wrapper>
-  ) : null
+  )
 }
 
 export default Home

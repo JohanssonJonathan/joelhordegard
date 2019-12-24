@@ -1,52 +1,35 @@
-import React, { Component } from 'react'
-import ReactHtmlParser from 'react-html-parser'
+import React, { useEffect, useRef, useState } from 'react'
+import Vimeo from '@u-wave/react-vimeo'
 import styled from '@emotion/styled/macro'
+import './style.css'
 
-const Player = require('@vimeo/player/dist/player.min')
-
-const Container = styled('div')`
-  .video {
-    position: fixed;
-    overflow: hidden;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    width: 70%;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-    overflow: hidden;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  @media screen and (max-width: 900px) {
-    .video {
-      width: 90%;
-    }
-  }
-`
-
-const Overlay = styled("div")` 
-position: fixed;
+const Overlay = styled('div')`
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 2;
+  z-index: 0;
   transition: all 0.5s ease-in-out;
 `
+const VideoWrapper = styled('div')`
+  position: absolute;
+  z-index: 200;
 
-class VideoFullScreen extends Component {
-  state = {
-    playing: false,
-  }
-  enableScrolling = () => {
-    window.onscroll = function() {}
-  }
-  disableScrolling = () => {
+  left: 0;
+  right: 0;
+  top: 15%;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+`
+
+const VideoFullScreen = props => {
+  const reference = useRef(null)
+  const [playing, setPlaying] = useState(false)
+
+  const disableScrolling = () => {
     var x = window.scrollX
     var y = window.scrollY
     window.onscroll = function() {
@@ -54,98 +37,66 @@ class VideoFullScreen extends Component {
     }
   }
 
-  componentWillMount() {
-    document.addEventListener('click', this.handleClick, false)
-  }
+  useEffect(() => {
+    disableScrolling()
 
-  componentDidMount() {
-    const { direction, setDirection } = this.props
     document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') {
-        direction === 'next' || (direction === null && setDirection())
-        this.setState({ playing: false })
-      } else if (e.key === 'ArrowRight') {
-        direction === 'previous' || (direction === null && setDirection('next'))
-
-        this.setState({ playing: false })
+      if (e.key === ' ') {
+        const player = reference.current && reference.current.player
+        player && player.play()
       }
 
-      const iframe = document.getElementsByClassName('video')[0]
-
-      if (!iframe) return null
-
-      const player = new Player(iframe)
-      player.getVideoId().then(function(id) {
-        fetch(
-          'https://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/262165847',
-        )
-          .then(response => response.json())
-          .then(jsondata => console.log(jsondata))
-      })
-
-      const { playing } = this.state
-
-      if (e.key === ' ') {
-        if (playing) {
-          player.pause()
-
-          this.setState({ playing: false })
-          return
-        }
-
-        player.play()
-        this.setState({ playing: true })
+      if (e.key === 'ArrowLeft') {
+        props.direction === 'next' ||
+          (props.direction === null && props.setDirection())
+      } else if (e.key === 'ArrowRight') {
+        props.direction === 'previous' ||
+          (props.direction === null && props.setDirection('next'))
       }
     })
 
-    this.disableScrolling()
-  }
+    return () => (window.onscroll = function() {})
+  }, [props])
 
-  componentWillUnmount() {
-    this.enableScrolling()
-    document.removeEventListener('click', this.handleClick, false)
-  }
-
-  handleClick = e => {
-    if (this.video.contains(e.target)) {
-      this.props.hideLargeScreen()
-      return
-    }
-  }
-  render() {
-    const { modifiedIFrameString } = this.props
-    const { playing } = this.state
-
-    const widthRegexp = /width=("|')\d+("|')/gm
-    const heightRegexp = /height=("|')\d+("|')/gm
-    const width = modifiedIFrameString.match(widthRegexp)
-    const height = modifiedIFrameString.match(heightRegexp)
-
-    const iframeReplaceWidth = modifiedIFrameString.replace(
-      width[0],
-      'width="840"',
-    )
-    const iframeWithReplacedHeightAndWith = iframeReplaceWidth.replace(
-      height[0],
-      'height="560"',
-    )
-
-    return (
-      <Container
-        className="video"
-        ref={video => {
-          this.video = video
+  return (
+    <VideoWrapper>
+      <Overlay
+        style={{
+          backgroundColor: playing ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.7)',
         }}
-      >
-        <Overlay
-          style={{
-            backgroundColor: playing ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.7)',
-          }}
-        />
-        {ReactHtmlParser(iframeWithReplacedHeightAndWith)}
-      </Container>
-    )
-  }
+        onClick={() => props.hideLargeScreen()}
+      />
+      <Vimeo
+        ref={reference}
+        className="test"
+        width="900px"
+        height="500px"
+        onPause={() => {
+          const player = reference.current && reference.current.player
+          setPlaying(false)
+          document.addEventListener('keydown', e => {
+            if (e.key === ' ') {
+              player.play()
+            }
+          })
+          window.focus()
+        }}
+        onPlay={() => {
+          setPlaying(true)
+          const player = reference.current && reference.current.player
+
+          document.addEventListener('keydown', e => {
+            if (e.key === ' ') {
+              player.pause()
+            }
+          })
+          window.focus()
+        }}
+        video={`https://vimeo.com/${props.videoId}`}
+      />
+    </VideoWrapper>
+  )
 }
+
 
 export default VideoFullScreen
