@@ -3,29 +3,30 @@ import styled from '@emotion/styled/macro'
 
 const Wrapper = styled('div')`
   width: 90%;
-  margin: auto;
-  display:flex;
-  justify-content:center;
+  margin: 100px auto 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`
+
+const Heading = styled('h4')`
+  font-weight: normal;
+  font-size:32px;
+  margin-bottom:20px;
+  /* font-size:14px; */
+`
+
+const SubHeading = styled("h5")` 
+
+  font-weight:normal;
 
 `
 
-const Image = styled('img')`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius:100%;
-  transition: transform 0.2s ease;
-`
-
-const RatioBox = styled('div')`
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-
-    padding-bottom: 100%;
-  }
+const Information = styled("div")` 
+    margin-bottom:10px;
+    line-height:20px;
 `
 
 const Contact = () => {
@@ -35,39 +36,17 @@ const Contact = () => {
 
   return (
     <Wrapper>
-        <div style={{position:"relative", width:"40%", top:"50px", right:"0", display:"flex", justifyContent:"center", alignItems:"center"}}>
-            <h5>
-            blablsll 
+      <Heading>Represented by The Talent Group</Heading>
+      <SubHeading>Contact</SubHeading>
+      <Information>
+        <h5>KLAARA@TTG.SE</h5>
+        <h5>+46 70 925 15 44</h5>
+      </Information>
 
-            </h5>
-            <h5>
-            blablsll 
-
-            </h5>
-            <h5>
-            blablsll 
-
-            </h5>
-            <h5>
-            blablsll 
-
-            </h5>
-            <h5>
-            blablsll 
-
-            </h5>
-               
-        </div>
-    <div style={{width:"30%", position:"relative", top:"50px"}}>
-      <RatioBox>
-        <Image src="https://i.vimeocdn.com/portrait/26100040_600x600.webp" />
-      </RatioBox>
-
-    </div>
-
-    <div style={{ position:"relative", width:"40%", top:"50px"}}>
-            hej
-        </div>
+      <Information>
+        <h5>FELICIA@TTG.SE</h5>
+        <h5>+46 709 115 720</h5>
+      </Information>
     </Wrapper>
   )
 }

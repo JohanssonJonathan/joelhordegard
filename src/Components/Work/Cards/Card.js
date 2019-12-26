@@ -19,8 +19,8 @@ const Wrapper = styled('div')`
   }
 
   @media screen and (min-width: 1000px) {
-    width: 33.13%;
-    margin: 0.1%;
+    width: 31.13%;
+    margin: 1%;
   }
 `
 
@@ -37,7 +37,7 @@ const Title= styled("h5")`
   display:flex;
   justify-content:center;
   align-items:center;
-
+  text-align:center;
   font-size:20px;
   transition-property: opactiy,top;
   transition-duration:0.1s;

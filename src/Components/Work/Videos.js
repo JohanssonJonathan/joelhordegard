@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from 'react'
+import React, { Component, Fragment} from 'react'
 import Cards from './Cards'
 import VideoFullScreen from './VideoFullScreen'
 
@@ -9,6 +9,7 @@ class Videos extends Component {
     index: null,
     direction: null,
     videoId: null,
+    playing:false,
   }
 
   componentDidMount() {
@@ -52,6 +53,8 @@ class Videos extends Component {
       setDirection: this.updateVideo,
       direction,
       hideLargeScreen: () => this.setState({ videoId: null }),
+      playing:this.state.playing,
+      self:this
     }
 
     return (

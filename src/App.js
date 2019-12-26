@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './CSS/App.css'
 import Home from './Components/Work'
 import Videos from './Components/Work/Videos'
@@ -14,6 +10,19 @@ let Cosmic = require('cosmicjs')()
 
 const App = () => {
   const [videos, setVideos] = useState(null)
+  const [images, setImages] = useState(null)
+
+  const filterMedia = (values, type) =>
+    values.filter(({ type_slug }) => type_slug === type)
+
+  const sortMedia = (values, type) => {
+    const media = values.slice(0)
+    media.sort(function(a, b) {
+      return a.order - b.order
+    })
+
+    type === 'videos' ? setVideos(media) : setImages(media)
+  }
 
   useEffect(() => {
     Cosmic.authenticate({
@@ -35,12 +44,11 @@ const App = () => {
               })
 
               bucket.getBucket().then(({ bucket: { objects } }) => {
-                const byOrder = objects.slice(0)
-                byOrder.sort(function(a, b) {
-                  return a.order - b.order
-                })
+                const videos = filterMedia(objects, 'videos')
+                const images = filterMedia(objects, 'images')
 
-                setVideos(byOrder)
+                sortMedia(videos, 'videos')
+                sortMedia(images)
               })
             }
           }),
@@ -51,6 +59,7 @@ const App = () => {
       })
   }, [])
 
+ 
   return (
     <Router>
       <Switch>
@@ -67,7 +76,7 @@ const App = () => {
         </Route>
         <Route path="/contact">
           <Home>
-            <Contact/>
+            <Contact />
           </Home>
         </Route>
         <Route path="/">

@@ -10,11 +10,12 @@ const Container = styled('div')`
   color: white;
   display: flex;
   flex-direction: column;
+  width:87%;
+  margin:auto;  
+  @media screen and (min-width:679px) {
+    /* left:6%; */
 
-  /* @media screen and (min-width:679px) {
-    left:5%;
-
-  } */
+  }
  
 `
 

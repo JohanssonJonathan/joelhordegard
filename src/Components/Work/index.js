@@ -16,11 +16,10 @@ const Wrapper = styled('div')`
   flex-direction:column;
 `
 
-const Home = ({ videos, children }) => {
+const Home = ({ children }) => {
   return (
     <Wrapper>
       <Header />
-
       {children}
     </Wrapper>
   )
