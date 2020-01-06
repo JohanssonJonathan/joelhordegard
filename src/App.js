@@ -4,8 +4,11 @@ import './CSS/App.css'
 import Home from './Components/Work'
 import Videos from './Components/Work/Videos'
 import Contact from './Components/Work/Contact'
-
+import Stills from "./Components/Stills"
 import LandingPage from './Components/LandingPage'
+import LoadingVideos from "./Components/Work/LoadingVideos"
+import LoadingImages from './Components/Stills/LoadingImages'
+
 let Cosmic = require('cosmicjs')()
 
 const App = () => {
@@ -59,19 +62,24 @@ const App = () => {
       })
   }, [])
 
- 
+
+
   return (
     <Router>
       <Switch>
         <Route path="/work">
           <Home>
+            {!videos && <LoadingVideos/>}
             {videos && videos.length > 0 && <Videos videos={videos} />}
+            
           </Home>
         </Route>
 
         <Route path="/stills">
           <Home>
-            <h2>Stills</h2>
+          {!images && <LoadingImages/>}
+
+            <Stills images={images}/>
           </Home>
         </Route>
         <Route path="/contact">

@@ -130,9 +130,12 @@ const VideoFullScreen = props => {
 
   return (
     <VideoWrapper>
+        
       <Arrows playing={playing} setDirection={props.setDirection} />
       <Overlay
         style={{
+                    // backgroundColor: playing ? 'rgba(0,0,0,0.95)' : "red",
+
           backgroundColor: playing ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.5)',
         }}
         onClick={() => props.hideLargeScreen()}

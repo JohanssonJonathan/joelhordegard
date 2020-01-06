@@ -57,10 +57,12 @@ class Videos extends Component {
       self:this
     }
 
+
     return (
       <Fragment>
         {videoId && <VideoFullScreen {...videoFullScreen} />}
         <Cards
+          videoId={videoId}
           data={videos}
           fullScreen={(videoId, index) => this.setState({ videoId, index })}
         />

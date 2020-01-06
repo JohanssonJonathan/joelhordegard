@@ -6,17 +6,17 @@ const Wrapper = styled('div')`
   width: 100%;
   margin: auto;
   display: flex;
-  /* background-color:rgba(255,255,255,0.6); */
   flex-wrap: wrap;
   @media screen and (min-width: 679px) {
     width: 90%;
   }
+  transition: opacity 0.2s ease;
+  opacity: ${props => (props.animation ? 0 : 1)};
 `
 
-const Cards = ({ data, fullScreen }) => (
-  <Wrapper>
+const Cards = ({ data, fullScreen, videoId }) => (
+  <Wrapper animation={videoId ? 1 : 0}>
     {data.map(({ metafields, title }, index) => {
-      console.log('metafields :', metafields);
       const videoId = metafields[0].value
 
       return (

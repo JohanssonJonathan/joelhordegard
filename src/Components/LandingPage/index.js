@@ -13,29 +13,47 @@ const Title = styled('h1')`
   right: 0;
   bottom: 0;
   z-index: 1;
+  flex-wrap:wrap;
+  text-align:center;
 `
 const Link = styled(BaseLink)`
   position: relative;
   font-style: italic;
   color: white;
   font-weight: 100;
-  font-size: 30px;
+  font-size: 20px;
+
+  padding:20px;
   transition: all 0.1s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  &:hover {
+  &:hover{
+    font-size:21px;
+  }
+
+  @media screen and (min-width: 679px) {
+    font-size: 30px;
+    &:hover {
     font-size: 31px;
   }
+  }
+
+ 
+
+
+  
 `
 
 const Video = styled('video')`
   position: fixed;
-  right: 0;
+  right:-20px;
+
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
+
 `
 
 const LandingPage = () => (
