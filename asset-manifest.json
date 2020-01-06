@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/joelhordegard/static/css/main.ae514bc4.chunk.css",
-    "main.js": "/joelhordegard/static/js/main.b3f77eb5.chunk.js",
-    "main.js.map": "/joelhordegard/static/js/main.b3f77eb5.chunk.js.map",
+    "main.js": "/joelhordegard/static/js/main.f92076d5.chunk.js",
+    "main.js.map": "/joelhordegard/static/js/main.f92076d5.chunk.js.map",
     "runtime-main.js": "/joelhordegard/static/js/runtime-main.00b10eb0.js",
     "runtime-main.js.map": "/joelhordegard/static/js/runtime-main.00b10eb0.js.map",
     "static/js/2.e7a51cde.chunk.js": "/joelhordegard/static/js/2.e7a51cde.chunk.js",
     "static/js/2.e7a51cde.chunk.js.map": "/joelhordegard/static/js/2.e7a51cde.chunk.js.map",
     "index.html": "/joelhordegard/index.html",
-    "precache-manifest.d355865e65b48812d25968fe118a8c1f.js": "/joelhordegard/precache-manifest.d355865e65b48812d25968fe118a8c1f.js",
+    "precache-manifest.28b59db48f28d7f8148800538d184f21.js": "/joelhordegard/precache-manifest.28b59db48f28d7f8148800538d184f21.js",
     "service-worker.js": "/joelhordegard/service-worker.js",
     "static/css/main.ae514bc4.chunk.css.map": "/joelhordegard/static/css/main.ae514bc4.chunk.css.map",
     "static/js/2.e7a51cde.chunk.js.LICENSE": "/joelhordegard/static/js/2.e7a51cde.chunk.js.LICENSE",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.00b10eb0.js",
     "static/js/2.e7a51cde.chunk.js",
     "static/css/main.ae514bc4.chunk.css",
-    "static/js/main.b3f77eb5.chunk.js"
+    "static/js/main.f92076d5.chunk.js"
   ]
 }
