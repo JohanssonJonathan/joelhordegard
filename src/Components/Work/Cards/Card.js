@@ -142,7 +142,6 @@ const Card = ({ videoId, title, onClick }) => {
           </Fragment>
         )}
       </RatioBox>
-      <MobileTitle>{title}</MobileTitle>
     </Wrapper>
   )
 }

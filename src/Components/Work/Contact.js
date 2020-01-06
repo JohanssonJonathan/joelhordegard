@@ -17,10 +17,9 @@ const Wrapper = styled('div')`
   align-items: center;
   text-align: center;
   @media screen and (max-width: 679px) {
-    margin: 50px auto 0;
-
-   position: relative;
-  }
+    top:100px;
+   
+}
 `
 
 const Heading = styled('h4')`
@@ -59,6 +58,8 @@ const Contact = () => {
 
   return (
     <Wrapper>
+
+      
       <Heading>Represented by The Talent Group</Heading>
       <SubHeading>Contact</SubHeading>
       <Information>
@@ -72,7 +73,7 @@ const Contact = () => {
         <a href="mailto:klaara@ttg.se">
           <Adress>felicia@ttg.se</Adress>
         </a>
-        <a  style={{fontSize:"15"}}href="tel:+46709115720">+46 709 115 720</a>
+        <a style={{fontSize:"15"}} href="tel:+46709115720">+46 709 115 720</a>
       </Information>
     </Wrapper>
   )
