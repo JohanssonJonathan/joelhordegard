@@ -5,20 +5,22 @@ import Media from 'react-media'
 const Wrapper = styled('div')`
   display: flex;
   flex-direction: column;
-  width: 90%;
+width:91.19%;
   margin: auto;
 
   @media screen and (min-width: 700px) {
     margin: 0;
-
-    width: 49%;
+    width:100%;
+    
+    /* width: 50%; */
   }
 `
 
 const Image = styled('img')`
   align-self: flex-start;
   /* height:600px; */
-  margin-bottom: 4%;
+  margin-bottom: 24px;
+  width:100%;
 `
 
 const Content = ({images, style}) => {

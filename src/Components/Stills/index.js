@@ -2,11 +2,10 @@ import React from 'react'
 import styled from '@emotion/styled/macro'
 import Media from 'react-media'
 import Content from './Content'
+
 const Wrapper = styled('div')`
   display: flex;
-
   width: 100%;
-  flex-wrap: wrap;
   margin: auto;
 
   @media screen and (min-width: 700px) {
@@ -15,7 +14,8 @@ const Wrapper = styled('div')`
 `
 
 const HeaderImage = styled('div')`
-  width: 90%;
+width:91.19%;
+  /* width: 88.34%; */
   margin: auto;
 
   @media screen and (min-width: 700px) {
@@ -58,7 +58,7 @@ const Stills = ({ images }) => {
     <div style={{ marginTop: '50px' }}>
       <HeaderImage>
         <Image
-          style={{ marginBottom: '2%' }}
+          style={{ marginBottom: '24px' }}
           width="100%"
           src={lastElementUrl}
           alt=""
@@ -82,7 +82,7 @@ const Stills = ({ images }) => {
 
           return (
             <Wrapper>
-              <Content style={{ marginRight: '2%' }} images={firstColumn} />
+              <Content images={firstColumn}  style={{marginRight:"24px"}}/>
               <Content images={secondColumn} />
             </Wrapper>
           )

@@ -102,17 +102,6 @@ const RatioBox = styled('div')`
 `
 
 
-const MobileTitle = styled("h5")` 
-
-  text-align:center;
-  background-color:black;
-  padding:30px 0;
-
- @media screen and (min-width:900px){
-    
-  display:none;
-  }
-`
 
 const Card = ({ videoId, title, onClick }) => {
   const [image, setImage] = useState(null)

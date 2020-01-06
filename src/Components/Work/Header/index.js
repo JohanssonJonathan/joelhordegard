@@ -71,7 +71,6 @@ const Header = ({ history }) => {
   useEffect(() => {
     setPath(route)
   }, [route])
-
   return (
     <Container>
       <Content>
@@ -86,7 +85,14 @@ const Header = ({ history }) => {
           <Menu path={path}/>
         </Media>
       </Content>
-      <Description>Director of Photography</Description>
+      <Media
+          queries={{
+            medium: '(min-width:700px)',
+          }}
+        >
+
+      {({medium})=>medium &&<Description>Director of Photography</Description>}
+      </Media>
     </Container>
   )
 }
