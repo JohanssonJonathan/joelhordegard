@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import styled from '@emotion/styled/macro'
+import { withRouter } from 'react-router-dom'
 
 const Wrapper = styled('div')`
   display: flex;
@@ -16,7 +17,12 @@ const Wrapper = styled('div')`
   flex-direction:column;
 `
 
-const Home = ({ children }) => {
+const Home = ({ children, history }) => {
+
+
+  const pathname = history.location.pathname;
+  
+ 
   return (
     <Wrapper>
       <Header />
@@ -25,4 +31,4 @@ const Home = ({ children }) => {
   )
 }
 
-export default Home
+export default withRouter(Home)

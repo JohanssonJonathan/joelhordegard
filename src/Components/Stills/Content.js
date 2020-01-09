@@ -20,11 +20,24 @@ const Image = styled('img')`
   /* height:600px; */
   margin-bottom: 24px;
   width:100%;
+  transition: opacity 1s ease;
+  &.entering {
+    opacity: 0;
+    // margin-top: 20px;
+  }
+  &.entered {
+    opacity: 1;
+    // margin-top: 0px;
+  }
+
+  &.exited {
+    opacity: 0;
+    // margin-top: 0px;
+  }
 `
 
-const Content = ({images, style}) => {
+const Content = ({images, style, className}) => {
     const regexp = /src="(.+?)"/gm
-
   return (
     <Wrapper style={{...style}}>
       {images &&
@@ -32,7 +45,7 @@ const Content = ({images, style}) => {
           const match = content.match(regexp)[0]
           const url = match.substring(5, match.length - 1)
           console.log('url :', url)
-          return <Image width="100%" src={url} alt="" />
+          return <Image  className={className} width="100%" src={url} alt="" />
         })}
     </Wrapper>
   )

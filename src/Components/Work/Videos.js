@@ -1,6 +1,8 @@
-import React, { Component, Fragment} from 'react'
+import React, { Component, Fragment } from 'react'
 import Cards from './Cards'
 import VideoFullScreen from './VideoFullScreen'
+import { Transition } from 'react-transition-group'
+import { withRouter } from 'react-router-dom'
 
 class Videos extends Component {
   state = {
@@ -9,15 +11,24 @@ class Videos extends Component {
     index: null,
     direction: null,
     videoId: null,
-    playing:false,
+    playing: false,
+    animate: false,
   }
 
   componentDidMount() {
-    const { videos } = this.props
+    const {
+      videos,
+      history: {
+        location: { pathname },
+      },
+    } = this.props
     const iframeRegexp = /<iframe.*<\/iframe>/gim
     const cards = videos.filter(({ content }) => content.match(iframeRegexp))
     const length = cards.length
-    this.setState({ indexOfLastVideo: length - 1 })
+    this.setState({
+      indexOfLastVideo: length - 1,
+      animate: pathname === '/work' ? true : false,
+    })
   }
 
   updateVideo = next => {
@@ -45,7 +56,7 @@ class Videos extends Component {
 
   render() {
     const { videos } = this.props
-    const { index, direction, videoId } = this.state
+    const { index, direction, videoId, animate } = this.state
 
     const videoFullScreen = {
       videoId,
@@ -53,22 +64,28 @@ class Videos extends Component {
       setDirection: this.updateVideo,
       direction,
       hideLargeScreen: () => this.setState({ videoId: null }),
-      playing:this.state.playing,
-      self:this
+      playing: this.state.playing,
+      self: this,
     }
 
-
+    console.log('animate: ', animate)
     return (
-      <Fragment>
-        {videoId && <VideoFullScreen {...videoFullScreen} />}
-        <Cards
-          videoId={videoId}
-          data={videos}
-          fullScreen={(videoId, index) => this.setState({ videoId, index })}
-        />
-      </Fragment>
+      <Transition in={animate} timeout={200}>
+        {animate => (
+          <Fragment>
+            {videoId && <VideoFullScreen {...videoFullScreen} />}
+
+            <Cards
+              animate={animate}
+              videoId={videoId}
+              data={videos}
+              fullScreen={(videoId, index) => this.setState({ videoId, index })}
+            />
+          </Fragment>
+        )}
+      </Transition>
     )
   }
 }
 
-export default Videos
+export default withRouter(Videos)

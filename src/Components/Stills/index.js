@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled/macro'
 import Media from 'react-media'
 import Content from './Content'
+import { withRouter } from 'react-router-dom'
+import { Transition } from 'react-transition-group'
 
 const Wrapper = styled('div')`
   display: flex;
@@ -13,8 +15,22 @@ const Wrapper = styled('div')`
   }
 `
 
+const Container = styled('div')`
+  margintop: 50px;
+  transition: margin-top 0.2s ease-in;
+
+
+  &.entering {
+    margin-top: 50px;
+  }
+  &.entered {
+    margin-top: 30px;
+  }
+
+`
+
 const HeaderImage = styled('div')`
-width:91.19%;
+  width: 91.19%;
   /* width: 88.34%; */
   margin: auto;
 
@@ -23,13 +39,31 @@ width:91.19%;
   }
 `
 
-
 const Image = styled('img')`
   align-self: flex-start;
   margin-bottom: 4%;
+  transition: opacity 0.2s ease;
+
+  &.entering {
+    opacity: 0;
+  }
+  &.entered {
+    opacity: 1;
+  } 
+
+  
+  &.exited {
+    opacity: 0;
+  } 
+ 
 `
 
-const Stills = ({ images }) => {
+const Stills = ({
+  images,
+  history: {
+    location: { pathname },
+  },
+}) => {
   if (!images) return null
 
   const regexp = /src="(.+?)"/gm
@@ -53,43 +87,78 @@ const Stills = ({ images }) => {
   const secondColumn = elementsExceptLast.filter(
     (item, index) => index > amountOfImagesInFirstColumn - 1,
   )
-
   return (
-    <div style={{ marginTop: '50px' }}>
-      <HeaderImage>
-        <Image
-          style={{ marginBottom: '24px' }}
-          width="100%"
-          src={lastElementUrl}
-          alt=""
-        />
-      </HeaderImage>
-
-      <Media
-        queries={{
-          small: '(max-width:699px)',
-          medium: '(min-width:700px)',
-        }}
-      >
-        {matches => {
-          if (matches.small) {
-            return (
-              <Wrapper>
-                <Content images={elementsExceptLast} />
-              </Wrapper>
-            )
-          }
-
-          return (
-            <Wrapper>
-              <Content images={firstColumn}  style={{marginRight:"24px"}}/>
-              <Content images={secondColumn} />
-            </Wrapper>
-          )
-        }}
-      </Media>
-    </div>
+    <Images
+      lastElementUrl={lastElementUrl}
+      elementsExceptLast={elementsExceptLast}
+      firstColumn={firstColumn}
+      secondColumn={secondColumn}
+      pathname={pathname}
+    />
   )
 }
 
-export default Stills
+const Images = ({
+  lastElementUrl,
+  elementsExceptLast,
+  firstColumn,
+  secondColumn,
+  pathname,
+}) => {
+  const [animate, setAnimate] = useState(false)
+
+  useEffect(() => {
+    setAnimate(pathname === '/stills' ? true : false)
+  }, [])
+
+  return (
+    <Transition in={animate} timeout={200}>
+      {state => {
+        
+        return (
+        <Container className={state}>
+          <HeaderImage>
+            <Image
+              className={state}
+              style={{ marginBottom: '24px' }}
+              width="100%"
+              src={lastElementUrl}
+              alt=""
+            />
+          </HeaderImage>
+
+          <Media
+            queries={{
+              small: '(max-width:699px)',
+              medium: '(min-width:700px)',
+            }}
+          >
+            {matches => {
+              if (matches.small) {
+                return (
+                  <Wrapper>
+                    <Content className={state} images={elementsExceptLast} />
+                  </Wrapper>
+                )
+              }
+
+              return (
+                <Wrapper>
+                  <Content
+                  className={state}
+                    images={firstColumn}
+                    style={{ marginRight: '24px' }}
+                  />
+                  <Content className={state} images={secondColumn} />
+                </Wrapper>
+              )
+            }}
+          </Media>
+        </Container>
+      )}}
+    </Transition>
+  )
+}
+
+
+export default withRouter(Stills)

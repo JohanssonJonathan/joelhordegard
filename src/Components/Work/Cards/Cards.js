@@ -8,12 +8,23 @@ const Content = styled('div')`
   display: flex;
   width:100%;
   flex-direction: column;
+  transition: opacity 0.2s ease;
+
+  &.entering {
+    opacity: 0;
+    margin-top: 20px;
+  }
+  &.entered {
+    opacity: 1;
+    margin-top: 0px;
+  }
+
 `
 
-const Cards = ({ data, fullScreen , style}) => {
+const Cards = ({ data, fullScreen , style, animate}) => {
  
   return (
-      <Content style={{...style}} >
+      <Content className={animate} style={{...style}} >
         {data.map(({ metafields, title }, index) => {
           const videoId = metafields[0].value
 
