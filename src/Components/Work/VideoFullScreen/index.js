@@ -53,10 +53,6 @@ const VideoWrapper = styled('div')`
   right: 0;
   top: 5%;
 
-  @media screen and (min-width: 400px) {
-    top: 20%;
-  }
-
   bottom: 0;
   margin: auto;
   display: flex;
@@ -134,7 +130,6 @@ const VideoFullScreen = props => {
       <Arrows playing={playing} setDirection={props.setDirection} />
       <Overlay
         style={{
-                    // backgroundColor: playing ? 'rgba(0,0,0,0.95)' : "red",
 
           backgroundColor: playing ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.5)',
         }}

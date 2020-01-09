@@ -12,7 +12,6 @@ width:91.19%;
     margin: 0;
     width:100%;
     
-    /* width: 50%; */
   }
 `
 

@@ -11,18 +11,8 @@ const Image = styled('img')`
 `
 const Wrapper = styled('div')`
   width: 100%;
-  margin: 1% 1% 0;
 
-  background-color: rgba(255, 255, 255, 0.07);
-  @media screen and (min-width: 679px) {
-    width: 49.6%;
-    margin: 0.2%;
-  }
-
-  @media screen and (min-width: 1000px) {
-    width: 31.13%;
-    margin: 1%;
-  }
+  margin-bottom: 24px;
 `
 
 const Title = styled('h5')`
@@ -66,11 +56,10 @@ const Info = styled('div')`
   bottom: 0;
   opacity: 0;
 
-  @media screen and (min-width:900px){
-    
-  :hover {
-    opacity: 1;
-  }
+  @media screen and (min-width: 900px) {
+    :hover {
+      opacity: 1;
+    }
   }
 `
 const RatioBox = styled('div')`
@@ -78,20 +67,17 @@ const RatioBox = styled('div')`
   overflow: hidden;
   cursor: pointer;
 
-  @media screen and (min-width:900px){
-    
+  background-color: rgba(255,255,255,0.05);
+  @media screen and (min-width: 900px) {
     &:hover > ${Image} {
-    transform: scale(1.1);
-  }
-
-
-
-  &:hover > ${Info} {
-    opacity: 1;
-    top: 0;
-  }
+      transform: scale(1.1);
     }
 
+    &:hover > ${Info} {
+      opacity: 1;
+      top: 0;
+    }
+  }
 
   &::after {
     display: block;
@@ -101,15 +87,17 @@ const RatioBox = styled('div')`
   }
 `
 
-
-
-const Card = ({ videoId, title, onClick }) => {
+const Card = ({ videoId, title, onClick, loading }) => {
   const [image, setImage] = useState(null)
 
   useEffect(() => {
-    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
-      .then(response => response.json())
-      .then(jsondata => setImage(jsondata.thumbnail_url))
+    if (!loading) {
+      fetch(
+        `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`,
+      )
+        .then(response => response.json())
+        .then(jsondata => setImage(jsondata.thumbnail_url))
+    }
   }, [])
 
   const regexpSize = /_.+\./gm
@@ -120,7 +108,7 @@ const Card = ({ videoId, title, onClick }) => {
   return (
     <Wrapper>
       <RatioBox onClick={onClick}>
-        {bigImage && (
+        {bigImage && !loading && (
           <Fragment>
             <Image src={bigImage} />
 
