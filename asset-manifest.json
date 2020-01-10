@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/joelhordegard/static/css/main.ae514bc4.chunk.css",
-    "main.js": "/joelhordegard/static/js/main.21760e38.chunk.js",
-    "main.js.map": "/joelhordegard/static/js/main.21760e38.chunk.js.map",
+    "main.css": "/joelhordegard/static/css/main.16900641.chunk.css",
+    "main.js": "/joelhordegard/static/js/main.fdf3c65d.chunk.js",
+    "main.js.map": "/joelhordegard/static/js/main.fdf3c65d.chunk.js.map",
     "runtime-main.js": "/joelhordegard/static/js/runtime-main.00b10eb0.js",
     "runtime-main.js.map": "/joelhordegard/static/js/runtime-main.00b10eb0.js.map",
     "static/js/2.8574a8ca.chunk.js": "/joelhordegard/static/js/2.8574a8ca.chunk.js",
     "static/js/2.8574a8ca.chunk.js.map": "/joelhordegard/static/js/2.8574a8ca.chunk.js.map",
     "index.html": "/joelhordegard/index.html",
-    "precache-manifest.5659176af4c86d7b1bbf26f75dd0f3b9.js": "/joelhordegard/precache-manifest.5659176af4c86d7b1bbf26f75dd0f3b9.js",
+    "precache-manifest.3dad6491fd48d23fcb7fe852641a54a5.js": "/joelhordegard/precache-manifest.3dad6491fd48d23fcb7fe852641a54a5.js",
     "service-worker.js": "/joelhordegard/service-worker.js",
-    "static/css/main.ae514bc4.chunk.css.map": "/joelhordegard/static/css/main.ae514bc4.chunk.css.map",
+    "static/css/main.16900641.chunk.css.map": "/joelhordegard/static/css/main.16900641.chunk.css.map",
     "static/js/2.8574a8ca.chunk.js.LICENSE": "/joelhordegard/static/js/2.8574a8ca.chunk.js.LICENSE",
     "static/media/Helvetica.ttf": "/joelhordegard/static/media/Helvetica.084ac2e3.ttf",
     "static/media/index.css": "/joelhordegard/static/media/Times-SemiBold.7395c5f8.ttf",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.00b10eb0.js",
     "static/js/2.8574a8ca.chunk.js",
-    "static/css/main.ae514bc4.chunk.css",
-    "static/js/main.21760e38.chunk.js"
+    "static/css/main.16900641.chunk.css",
+    "static/js/main.fdf3c65d.chunk.js"
   ]
 }
