@@ -83,7 +83,7 @@ const RatioBox = styled('div')`
     display: block;
     content: '';
     /* 16:9 aspect ratio */
-    padding-bottom: 60.25%;
+    padding-bottom: 56.25%;
   }
 `
 
@@ -100,10 +100,11 @@ const Card = ({ videoId, title, onClick, loading }) => {
     }
   }, [])
 
+
   const regexpSize = /_.+\./gm
 
   const size = image && image.match(regexpSize)
-  const bigImage = image && image.replace(size, '_1195x966.')
+  const bigImage = image && image.replace(size, '_1180x644.')
 
   return (
     <Wrapper>

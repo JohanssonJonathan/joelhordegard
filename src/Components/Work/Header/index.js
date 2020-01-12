@@ -6,16 +6,16 @@ import Menu from './Menu'
 const Container = styled('div')`
   font-style: italic;
   position: relative;
-  /* left:3%; */
   margin-bottom: 20px;
   color: white;
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* align-self:center; */
-  /* margin: auto; */
+
   @media screen and (min-width: 679px) {
     left:6%;
+    width: 94%;
+
       /* margin: auto; */
 
   }
