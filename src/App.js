@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './CSS/App.css'
 import Home from './Components/Work'
 import Videos from './Components/Work/Videos'
@@ -8,7 +8,6 @@ import Stills from "./Components/Stills"
 import LandingPage from './Components/LandingPage'
 import LoadingVideos from "./Components/Work/LoadingVideos"
 import LoadingImages from './Components/Stills/LoadingImages'
-import { NavLink as RouterNavLink, Switch } from "react-router-dom";
 
 let Cosmic = require('cosmicjs')()
 
@@ -66,33 +65,33 @@ const App = () => {
 
 
   return (
-    <NavLink>
+    <Router>
       <Switch>
-        <RouterNavLink path="/work">
+        <Route path="/:work">
           <Home>
             {!videos && <LoadingVideos/>}
             {videos && videos.length > 0 && <Videos videos={videos} />}
             
           </Home>
-        </RouterNavLink>
+        </Route>
 
-        <RouterNavLink path="/stills">
+        <Route path="/:stills">
           <Home>
           {!images && <LoadingImages/>}
 
             <Stills images={images}/>
           </Home>
-        </RouterNavLink>
-        <RouterNavLink path="/contact">
+        </Route>
+        <Route path="/:contact">
           <Home>
             <Contact />
           </Home>
-        </RouterNavLink>
-        <RouterNavLink path="/">
+        </Route>
+        <Route path="/">
           <LandingPage />
-        </RouterNavLink>
+        </Route>
       </Switch>
-    </NavLink>
+    </Router>
   )
 }
 
