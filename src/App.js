@@ -67,7 +67,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/:work">
+        <Route path="/work">
           <Home>
             {!videos && <LoadingVideos/>}
             {videos && videos.length > 0 && <Videos videos={videos} />}
@@ -75,14 +75,14 @@ const App = () => {
           </Home>
         </Route>
 
-        <Route path="/:stills">
+        <Route path="/stills">
           <Home>
           {!images && <LoadingImages/>}
 
             <Stills images={images}/>
           </Home>
         </Route>
-        <Route path="/:contact">
+        <Route path="/contact">
           <Home>
             <Contact />
           </Home>
