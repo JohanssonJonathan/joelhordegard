@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import './CSS/App.css'
 import Home from './Components/Work'
 import Videos from './Components/Work/Videos'
@@ -65,7 +65,7 @@ const App = () => {
 
 
   return (
-    <Router>
+    <HashRouter>
       <Switch>
         <Route path="/work">
           <Home>
@@ -91,7 +91,7 @@ const App = () => {
           <LandingPage />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   )
 }
 
