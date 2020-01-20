@@ -4,9 +4,9 @@ import './CSS/App.css'
 import Home from './Components/Work'
 import Videos from './Components/Work/Videos'
 import Contact from './Components/Work/Contact'
-import Stills from "./Components/Stills"
+import Stills from './Components/Stills'
 import LandingPage from './Components/LandingPage'
-import LoadingVideos from "./Components/Work/LoadingVideos"
+import LoadingVideos from './Components/Work/LoadingVideos'
 import LoadingImages from './Components/Stills/LoadingImages'
 
 let Cosmic = require('cosmicjs')()
@@ -62,23 +62,21 @@ const App = () => {
       })
   }, [])
 
-
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
       <Switch>
-        <Route path="/work">
+        <Route path={`${process.env.PUBLIC_URL}/work`}>
           <Home>
-            {!videos && <LoadingVideos/>}
+            {!videos && <LoadingVideos />}
             {videos && videos.length > 0 && <Videos videos={videos} />}
-            
           </Home>
         </Route>
 
         <Route path="/stills">
           <Home>
-          {!images && <LoadingImages/>}
+            {!images && <LoadingImages />}
 
-            <Stills images={images}/>
+            <Stills images={images} />
           </Home>
         </Route>
         <Route path="/contact">
@@ -89,8 +87,7 @@ const App = () => {
         <Route path="/">
           <LandingPage />
         </Route>
-        <Route path='*' component={()=><h2>WALLA HABIBI</h2>} />
-
+        <Route path="*" component={() => <h2>WALLA HABIBI</h2>} />
       </Switch>
     </BrowserRouter>
   )
