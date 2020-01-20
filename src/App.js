@@ -89,6 +89,8 @@ const App = () => {
         <Route path="/">
           <LandingPage />
         </Route>
+        <Route path='*' component={()=><h2>WALLA HABIBI</h2>} />
+
       </Switch>
     </BrowserRouter>
   )
