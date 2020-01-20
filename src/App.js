@@ -63,9 +63,8 @@ const App = () => {
   }, [])
 
 
-
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
       <Switch>
         <Route path="/work">
           <Home>
