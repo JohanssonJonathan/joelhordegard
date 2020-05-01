@@ -22,12 +22,12 @@ const Content = styled('div')`
 `
 
 const Cards = ({ data, fullScreen , style, animate}) => {
- 
+  console.log("here")
   return (
       <Content className={animate} style={{...style}} >
         {data.map(({ metafields, title }, index) => {
           const videoId = metafields[0].value
-
+          console.log('title :>> ', title);
           return (
             <Card
               key={index}

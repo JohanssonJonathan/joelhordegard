@@ -6,12 +6,10 @@ const Image = styled('img')`
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
   transition: transform 0.2s ease;
 `
 const Wrapper = styled('div')`
   width: 100%;
-
   margin-bottom: 24px;
 `
 
@@ -83,7 +81,7 @@ const RatioBox = styled('div')`
     display: block;
     content: '';
     /* 16:9 aspect ratio */
-    padding-bottom: 56.25%;
+    padding-bottom: 53.25%;
   }
 `
 
@@ -98,14 +96,18 @@ const Card = ({ videoId, title, onClick, loading }) => {
         .then(response => response.json())
         .then(jsondata => setImage(jsondata.thumbnail_url))
     }
-  }, [])
+  }, [videoId])
 
+
+  console.log('image :>> ', image);
 
   const regexpSize = /_.+\./gm
 
   const size = image && image.match(regexpSize)
   const bigImage = image && image.replace(size, '_1180x644.')
 
+  console.log('loading :>> ', !loading);
+  console.log('bigImage :>> ', bigImage);
   return (
     <Wrapper>
       <RatioBox onClick={onClick}>

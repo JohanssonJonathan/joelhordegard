@@ -33,27 +33,18 @@ const Content = ({ data, fullScreen, videoId, animate }) => {
   }
 
   const twoColumns = {
-    firstColumn: data.filter((item, index) => index < divideIntoColumns(2)),
-    secondColumn: data.filter(
-      (item, index) => index > divideIntoColumns(2) - 1,
-    ),
+    firstColumn: data.filter((item, index) => index % 2 === 0 && item),
+    secondColumn: data.filter((item, index) => index % 2 && item),
   }
 
   const threeColumns = {
-    firstColumn: null,
-    secondColumn: null,
-    thirdColumn: null,
+    firstColumn: data.filter((item, index) => index % 3 === 0 && item),
+    secondColumn: data.filter((item, index) => index % 3 === 1 && item),
+    thirdColumn: data.filter((item, index) => index % 3 === 2 && item),
+
   }
 
-  for (let i = 0; i < 3; i++) {
-    if (i === 0) {
-      threeColumns.firstColumn = data.slice(i * 3, (i + 1) * 3)
-    } else if (i === 1) {
-      threeColumns.secondColumn = data.slice(i * 3, (i + 1) * 3)
-    } else {
-      threeColumns.thirdColumn = data.slice(i * 3, (i + 1) * 3)
-    }
-  }
+  
 
   return (
     <Wrapper className={animate} animation={videoId ? 1 : 0}>
@@ -61,10 +52,12 @@ const Content = ({ data, fullScreen, videoId, animate }) => {
         queries={{
           small: '(max-width:699px)',
           medium: '(min-width:700px) and (max-width:1099px)',
-          large: '(min-width:1100px)',
+          large: '(min-width:1099px)',
         }}
       >
         {matches => {
+
+          console.log('matches :>> ', matches);
           if (matches.small) {
             return (
               <Cards
@@ -76,6 +69,8 @@ const Content = ({ data, fullScreen, videoId, animate }) => {
             )
           }
           if (matches.medium) {
+            console.log('twoColumns :>> ', twoColumns);
+
             return (
               <Fragment>
                 <Cards
