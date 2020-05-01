@@ -12,7 +12,7 @@ const Test = styled("div")`
 
   align-items:center;
 
-  @media screen and (min-width: 700px) {
+  @media screen and (min-width: 1000px) {
     bottom: 40%;
   }
 `
@@ -27,7 +27,7 @@ const TestRight =styled("div")`
 
   align-items:center;
 
-  @media screen and (min-width: 700px) {
+  @media screen and (min-width: 1000px) {
     bottom: 40%;
   }
 

@@ -14,15 +14,10 @@ const Wrapper = styled('div')`
   margin: auto;
   position: relative;
   top: 40px;
-  flex-direction:column;
+  flex-direction: column;
 `
 
 const Home = ({ children, history }) => {
-
-
-  const pathname = history.location.pathname;
-  
- 
   return (
     <Wrapper>
       <Header />
