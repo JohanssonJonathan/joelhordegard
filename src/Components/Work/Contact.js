@@ -22,18 +22,15 @@ const Wrapper = styled('div')`
 
   &.entering {
     opacity: 0;
-    margin-top: 20px;
   }
   &.entered {
     opacity: 1;
-    margin-top:0px;
 
   } 
 
   
   &.exited {
     opacity: 0;
-    margin-top:0px;
 
   } 
 `
