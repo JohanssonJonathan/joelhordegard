@@ -28,10 +28,6 @@ const Wrapper = styled('div')`
 `
 
 const Content = ({ data, fullScreen, videoId, animate }) => {
-  const divideIntoColumns = amount => {
-    return Math.ceil(data.length / amount)
-  }
-
   const twoColumns = {
     firstColumn: data.filter((item, index) => index % 2 === 0 && item),
     secondColumn: data.filter((item, index) => index % 2 && item),
@@ -41,10 +37,7 @@ const Content = ({ data, fullScreen, videoId, animate }) => {
     firstColumn: data.filter((item, index) => index % 3 === 0 && item),
     secondColumn: data.filter((item, index) => index % 3 === 1 && item),
     thirdColumn: data.filter((item, index) => index % 3 === 2 && item),
-
   }
-
-  
 
   return (
     <Wrapper className={animate} animation={videoId ? 1 : 0}>
@@ -56,8 +49,6 @@ const Content = ({ data, fullScreen, videoId, animate }) => {
         }}
       >
         {matches => {
-
-          console.log('matches :>> ', matches);
           if (matches.small) {
             return (
               <Cards
@@ -69,8 +60,6 @@ const Content = ({ data, fullScreen, videoId, animate }) => {
             )
           }
           if (matches.medium) {
-            console.log('twoColumns :>> ', twoColumns);
-
             return (
               <Fragment>
                 <Cards

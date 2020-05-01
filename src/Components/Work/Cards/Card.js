@@ -65,7 +65,7 @@ const RatioBox = styled('div')`
   overflow: hidden;
   cursor: pointer;
 
-  background-color: rgba(255,255,255,0.05);
+  background-color: rgba(255, 255, 255, 0.05);
   @media screen and (min-width: 900px) {
     &:hover > ${Image} {
       transform: scale(1.1);
@@ -98,16 +98,11 @@ const Card = ({ videoId, title, onClick, loading }) => {
     }
   }, [videoId])
 
-
-  console.log('image :>> ', image);
-
   const regexpSize = /_.+\./gm
 
   const size = image && image.match(regexpSize)
   const bigImage = image && image.replace(size, '_1180x644.')
 
-  console.log('loading :>> ', !loading);
-  console.log('bigImage :>> ', bigImage);
   return (
     <Wrapper>
       <RatioBox onClick={onClick}>

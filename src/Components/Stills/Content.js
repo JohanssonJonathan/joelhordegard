@@ -44,7 +44,6 @@ const Content = ({images, style, className}) => {
         images.map(({ content }) => {
           const match = content.match(regexp)[0]
           const url = match.substring(5, match.length - 1)
-          console.log('url :', url)
           return <Image  className={className} width="100%" src={url} alt="" />
         })}
     </Wrapper>

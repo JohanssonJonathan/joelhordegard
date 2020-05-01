@@ -67,15 +67,12 @@ const LandingPage = () => (
           small: '(max-width:800px)',
         }}
       >
-        {breakpoint => {
-          console.log('breakpoint :>> ', breakpoint);
-          return (
-            <source
-              src={breakpoint.small ? mobileVideo : myVideo}
-              type="video/mp4"
-            />
-          )
-        }}
+        {breakpoint => (
+          <source
+            src={breakpoint.small ? mobileVideo : myVideo}
+            type="video/mp4"
+          />
+        )}
       </Media>
       <source src={myVideo} type="video/mp4" />
       Your browser does not support the video tag.

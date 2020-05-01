@@ -43,13 +43,8 @@ const Background = styled('div')`
   height: ${props => props.height};
   background-color: rgba(255, 255, 255, 0.07);
   margin-top: 20px;
-
 `
 const LoadingImages = () => {
-  const data = [1, 2, 3, 4, 5, 6, 7, 8]
-
-  console.log('data :', data)
-
   return (
     <div style={{ marginTop: '50px' }}>
       <HeaderImage />
@@ -68,7 +63,6 @@ const LoadingImages = () => {
                 <Content>
                   {background &&
                     background.map(img => {
-                      console.log('img :', img)
                       return (
                         <Background
                           width="100%"
@@ -90,13 +84,12 @@ const LoadingImages = () => {
               <Content>
                 {firstColumn &&
                   firstColumn.map(img => {
-                      
                     return (
                       <Background
                         width="100%"
                         height={img}
                         border="1px solid red"
-                        style={{marginRight:"6%"}}
+                        style={{ marginRight: '6%' }}
                       />
                     )
                   })}
@@ -104,12 +97,7 @@ const LoadingImages = () => {
               <Content>
                 {secondColumn &&
                   secondColumn.map(img => {
-                    return (
-                      <Background
-                        width="100%"
-                        height={img}
-                      />
-                    )
+                    return <Background width="100%" height={img} />
                   })}
               </Content>
             </Wrapper>
