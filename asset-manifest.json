@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.09936e5f.chunk.css",
-    "main.js": "/static/js/main.f729b5f1.chunk.js",
-    "main.js.map": "/static/js/main.f729b5f1.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.a5019ba7.js",
-    "runtime-main.js.map": "/static/js/runtime-main.a5019ba7.js.map",
-    "static/js/2.8c1a4b16.chunk.js": "/static/js/2.8c1a4b16.chunk.js",
-    "static/js/2.8c1a4b16.chunk.js.map": "/static/js/2.8c1a4b16.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.08d26698c7882eb77c1557f922cdd030.js": "/precache-manifest.08d26698c7882eb77c1557f922cdd030.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.09936e5f.chunk.css.map": "/static/css/main.09936e5f.chunk.css.map",
-    "static/js/2.8c1a4b16.chunk.js.LICENSE": "/static/js/2.8c1a4b16.chunk.js.LICENSE",
-    "static/media/Helvetica.ttf": "/static/media/Helvetica.084ac2e3.ttf",
-    "static/media/index.css": "/static/media/Times-SemiBold.7395c5f8.ttf",
-    "static/media/backgroundVideo.mp4": "/static/media/backgroundVideo.8f282785.mp4"
+    "main.css": "/joelhordegard/static/css/main.16900641.chunk.css",
+    "main.js": "/joelhordegard/static/js/main.f213ce72.chunk.js",
+    "main.js.map": "/joelhordegard/static/js/main.f213ce72.chunk.js.map",
+    "runtime-main.js": "/joelhordegard/static/js/runtime-main.00b10eb0.js",
+    "runtime-main.js.map": "/joelhordegard/static/js/runtime-main.00b10eb0.js.map",
+    "static/js/2.9f2ccbb8.chunk.js": "/joelhordegard/static/js/2.9f2ccbb8.chunk.js",
+    "static/js/2.9f2ccbb8.chunk.js.map": "/joelhordegard/static/js/2.9f2ccbb8.chunk.js.map",
+    "index.html": "/joelhordegard/index.html",
+    "precache-manifest.bf3a6f9715c400cc25346caa277b80b9.js": "/joelhordegard/precache-manifest.bf3a6f9715c400cc25346caa277b80b9.js",
+    "service-worker.js": "/joelhordegard/service-worker.js",
+    "static/css/main.16900641.chunk.css.map": "/joelhordegard/static/css/main.16900641.chunk.css.map",
+    "static/js/2.9f2ccbb8.chunk.js.LICENSE": "/joelhordegard/static/js/2.9f2ccbb8.chunk.js.LICENSE",
+    "static/media/Helvetica.ttf": "/joelhordegard/static/media/Helvetica.084ac2e3.ttf",
+    "static/media/index.css": "/joelhordegard/static/media/Times-SemiBold.7395c5f8.ttf",
+    "static/media/backgroundVideo.mp4": "/joelhordegard/static/media/backgroundVideo.8f282785.mp4",
+    "static/media/backgroundVideoMobile.mp4": "/joelhordegard/static/media/backgroundVideoMobile.123c6a09.mp4"
   },
   "entrypoints": [
-    "static/js/runtime-main.a5019ba7.js",
-    "static/js/2.8c1a4b16.chunk.js",
-    "static/css/main.09936e5f.chunk.css",
-    "static/js/main.f729b5f1.chunk.js"
+    "static/js/runtime-main.00b10eb0.js",
+    "static/js/2.9f2ccbb8.chunk.js",
+    "static/css/main.16900641.chunk.css",
+    "static/js/main.f213ce72.chunk.js"
   ]
 }
