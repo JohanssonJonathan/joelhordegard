@@ -2,35 +2,34 @@ import React from 'react'
 import styled from '@emotion/styled/macro'
 import './style.css'
 
-const Test = styled("div")` 
- bottom:5%;
+const LeftWrapper = styled('div')`
+  bottom: 5%;
   left: 100px;
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 
   z-index: 1990;
 
-  align-items:center;
+  align-items: center;
 
   @media screen and (min-width: 1000px) {
     bottom: 40%;
   }
 `
 
-const TestRight =styled("div")` 
- bottom:5%;
+const RightWrapper = styled('div')`
+  bottom: 5%;
   right: 100px;
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 
   z-index: 1990;
 
-  align-items:center;
+  align-items: center;
 
   @media screen and (min-width: 1000px) {
     bottom: 40%;
   }
-
 `
 
 const ArrowLeft = styled('div')`
@@ -44,7 +43,7 @@ const ArrowLeft = styled('div')`
   height: 30px;
 
   cursor: pointer;
-  
+
   -webkit-transform: rotate(-45deg);
   border-left: 2px white solid;
   opacity: 0.7;
@@ -80,19 +79,22 @@ const ArrowRight = styled('div')`
   @media screen and (min-width: 700px) {
     bottom: 45%;
   }
-
 `
 
 const Arrows = ({ playing, setDirection }) => (
-  <div style={{ display: playing ? 'none' : 'block'}}>
-    <Test  onClick={setDirection} style={{ width:"100px", height:"100px", position:"fixed"}}>
-    <ArrowLeft onClick={setDirection} />
-
-    </Test>
-    <TestRight  onClick={()=>setDirection("next")} style={{ width:"100px", height:"100px", position:"fixed"}} >
-
-    <ArrowRight/>
-    </TestRight>
+  <div style={{ display: playing ? 'none' : 'block' }}>
+    <LeftWrapper
+      onClick={() => setDirection()}
+      style={{ width: '100px', height: '100px', position: 'fixed' }}
+    >
+      <ArrowLeft />
+    </LeftWrapper>
+    <RightWrapper
+      onClick={() => setDirection('next')}
+      style={{ width: '100px', height: '100px', position: 'fixed' }}
+    >
+      <ArrowRight />
+    </RightWrapper>
   </div>
 )
 

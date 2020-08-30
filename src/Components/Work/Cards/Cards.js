@@ -21,14 +21,16 @@ const Content = styled('div')`
 const Cards = ({ data, fullScreen, style, animate }) => {
   return (
     <Content className={animate} style={{ ...style }}>
-      {data.map(({ metafields, title }, index) => {
+      {data.map(({ metafields, title, order }, index) => {
         const videoId = metafields[0].value
+
+
         return (
           <Card
-            key={index}
+            key={title}
             title={title}
             videoId={videoId}
-            onClick={() => fullScreen(videoId, index)}
+            onClick={() => fullScreen(videoId, order)}
           />
         )
       })}

@@ -25,6 +25,7 @@ class Videos extends Component {
     const iframeRegexp = /<iframe.*<\/iframe>/gim
     const cards = videos.filter(({ content }) => content.match(iframeRegexp))
     const length = cards.length
+
     this.setState({
       indexOfLastVideo: length - 1,
       animate: pathname === '/work' ? true : false,
@@ -36,6 +37,8 @@ class Videos extends Component {
     const { videos } = this.props
     const newIndex = next ? index + 1 : index - 1
     const video = videos[newIndex] && videos[newIndex].metafields[0].value
+
+
 
     if (video) {
       this.setState({
