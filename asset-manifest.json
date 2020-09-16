@@ -5,13 +5,13 @@
     "main.js.map": "/static/js/main.9a88e93a.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a5019ba7.js",
     "runtime-main.js.map": "/static/js/runtime-main.a5019ba7.js.map",
-    "static/js/2.c87c79f8.chunk.js": "/static/js/2.c87c79f8.chunk.js",
-    "static/js/2.c87c79f8.chunk.js.map": "/static/js/2.c87c79f8.chunk.js.map",
+    "static/js/2.85e72dfc.chunk.js": "/static/js/2.85e72dfc.chunk.js",
+    "static/js/2.85e72dfc.chunk.js.map": "/static/js/2.85e72dfc.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.18ae357c774a5ad71638f9491fd1d149.js": "/precache-manifest.18ae357c774a5ad71638f9491fd1d149.js",
+    "precache-manifest.237406157c0d0292c7fd5bfc91979f3a.js": "/precache-manifest.237406157c0d0292c7fd5bfc91979f3a.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.043b0abb.chunk.css.map": "/static/css/main.043b0abb.chunk.css.map",
-    "static/js/2.c87c79f8.chunk.js.LICENSE": "/static/js/2.c87c79f8.chunk.js.LICENSE",
+    "static/js/2.85e72dfc.chunk.js.LICENSE": "/static/js/2.85e72dfc.chunk.js.LICENSE",
     "static/media/Helvetica.ttf": "/static/media/Helvetica.084ac2e3.ttf",
     "static/media/index.css": "/static/media/Times-SemiBold.7395c5f8.ttf",
     "static/media/backgroundVideo.mp4": "/static/media/backgroundVideo.8f282785.mp4",
@@ -19,7 +19,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a5019ba7.js",
-    "static/js/2.c87c79f8.chunk.js",
+    "static/js/2.85e72dfc.chunk.js",
     "static/css/main.043b0abb.chunk.css",
     "static/js/main.9a88e93a.chunk.js"
   ]
