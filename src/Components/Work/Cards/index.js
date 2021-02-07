@@ -39,6 +39,8 @@ const Content = ({ data, fullScreen, videoId, animate }) => {
     thirdColumn: data.filter((item, index) => index % 3 === 2 && item),
   }
 
+  console.log('data.length :>> ', data.length);
+  console.log('twoColumns :>> ', twoColumns);
   return (
     <Wrapper className={animate} animation={videoId ? 1 : 0}>
       <Media

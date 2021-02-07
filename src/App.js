@@ -47,9 +47,11 @@ const App = () => {
               })
 
               bucket.getBucket().then(({ bucket: { objects } }) => {
+                console.log('objects :>> ', objects);
                 const videos = filterMedia(objects, 'videos')
                 const images = filterMedia(objects, 'images')
 
+                console.log('videos :>> ', videos);
                 sortMedia(videos, 'videos')
                 sortMedia(images)
               })

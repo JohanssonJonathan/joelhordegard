@@ -71,6 +71,8 @@ class Videos extends Component {
       self: this,
     }
 
+    console.log('videos :>> ', videos);
+
     return (
       <Transition in={animate} timeout={200}>
         {animate => (

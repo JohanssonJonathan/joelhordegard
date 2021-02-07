@@ -22,15 +22,14 @@ const Cards = ({ data, fullScreen, style, animate }) => {
   return (
     <Content className={animate} style={{ ...style }}>
       {data.map(({ metafields, title, order }, index) => {
-        const videoId = metafields[0].value
-
-
+        const videoId = metafields[0] && metafields[0].value
+                
         return (
           <Card
             key={title}
             title={title}
             videoId={videoId}
-            onClick={() => fullScreen(videoId, order)}
+            onClick={() => fullScreen(videoId, order -1)}
           />
         )
       })}
