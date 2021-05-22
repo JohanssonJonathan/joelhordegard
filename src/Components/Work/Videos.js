@@ -32,13 +32,12 @@ class Videos extends Component {
     })
   }
 
+
   updateVideo = next => {
     const { index, indexOfLastVideo } = this.state
     const { videos } = this.props
     const newIndex = next ? index + 1 : index - 1
     const video = videos[newIndex] && videos[newIndex].metafields[0].value
-
-
 
     if (video) {
       this.setState({
@@ -66,12 +65,10 @@ class Videos extends Component {
       index,
       setDirection: this.updateVideo,
       direction,
-      hideLargeScreen: () => this.setState({ videoId: null }),
+      hideLargeScreen: () => this.setState({ videoId: null, index: null }),
       playing: this.state.playing,
       self: this,
     }
-
-    console.log('videos :>> ', videos);
 
     return (
       <Transition in={animate} timeout={200}>
@@ -83,7 +80,8 @@ class Videos extends Component {
               animate={animate}
               videoId={videoId}
               data={videos}
-              fullScreen={(videoId, index) => this.setState({ videoId, index })}
+              fullScreen={(videoId, index) =>{
+                this.setState({ videoId, index })}}
             />
           </Fragment>
         )}

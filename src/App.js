@@ -28,40 +28,24 @@ const App = () => {
   }
 
   useEffect(() => {
-    Cosmic.authenticate({
-      email: process.env.REACT_APP_EMAIL,
-      password: process.env.REACT_APP_PASSWORD,
+    const bucket = Cosmic.bucket({
+      slug: process.env.REACT_APP_BUCKET,
+      read_key: process.env.REACT_APP_APIKEY,
     })
-      .then(data => {
-        Cosmic = require('cosmicjs')({
-          token: data.token,
-        })
+    bucket.getObjects().then(({objects})=> {
 
-        Cosmic.getBuckets().then(data =>
-          data.buckets.forEach(item => {
-            if (item.title === 'joelhordegard') {
-              const bucket = Cosmic.bucket({
-                slug: item.title,
-                read_key: item.api_access.read_key,
-                write_key: '',
-              })
 
-              bucket.getBucket().then(({ bucket: { objects } }) => {
-                console.log('objects :>> ', objects);
-                const videos = filterMedia(objects, 'videos')
-                const images = filterMedia(objects, 'images')
 
-                console.log('videos :>> ', videos);
-                sortMedia(videos, 'videos')
-                sortMedia(images)
-              })
-            }
-          }),
-        )
-      })
-      .catch(err => {
-        throw new Error('Not authorized')
-      })
+
+
+      console.log("objects: ", objects)
+      const videos = filterMedia(objects, 'videos')
+      const images = filterMedia(objects, 'images')
+
+      console.log("videoS here: ", videos)
+      sortMedia(videos, 'videos')
+      sortMedia(images)
+    }).catch((err)=> {throw new Error('Not authorized')})
   }, [])
 
   return (
